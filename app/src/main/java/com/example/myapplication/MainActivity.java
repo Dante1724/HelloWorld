@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -21,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtUsername;
     private EditText txtPassword;
     private Button btnLogin;
+    private String username = "admin";
+    private String password = "admin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate: dipanggil");
-        Log.i(TAG, "onCreate: percobaan");
         setContentView(R.layout.activity_main);
         txtUsername = findViewById(R.id.txtUsername);
         txtPassword = findViewById(R.id.txtPassword);
@@ -34,14 +36,17 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                onClickBtnLoginFalse();
+                onClickBtnLogin();
             }
         });
     }
 
-    private void onClickBtnLoginFalse(){
-        Toast.makeText(getParent(), "Username atau Password Anda tidak benar!", Toast.LENGTH_LONG).show();
-        Toast.makeText(getParent(), txtUsername.getText(), Toast.LENGTH_LONG).show();
-        Toast.makeText(getParent(), txtPassword.getText(), Toast.LENGTH_LONG).show();
+    private void onClickBtnLogin(){
+        if(txtUsername.getText().toString().equals(username) && txtPassword.getText().toString().equals(password)){
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(), "Username atau Password Anda tidak benar!", Toast.LENGTH_LONG).show();
+        }
     }
 }
