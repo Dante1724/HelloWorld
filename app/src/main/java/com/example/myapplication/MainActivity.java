@@ -44,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
     private void onClickBtnLogin(){
         if(txtUsername.getText().toString().equals(username) && txtPassword.getText().toString().equals(password)){
             Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("Try", "Try");
             startActivity(intent);
         } else {
-            Toast.makeText(getApplicationContext(), "Username atau Password Anda tidak benar!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Username atau Password ANDA tidak benar!", Toast.LENGTH_LONG).show();
         }
     }
 }
