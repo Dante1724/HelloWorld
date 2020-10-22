@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import com.example.myapplication.BroadcastRecieverClass;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -27,7 +30,11 @@ public class HomeActivity extends AppCompatActivity {
         tabLeft = findViewById(R.id.tabItemL);
         tabRight = findViewById(R.id.tabItemR);
         tabLayout = findViewById(R.id.tabLayout);
-//        fragmentHolder = findViewById(R.id.fragmentPlaceHolder);
+        String getExtra = getIntent().getStringExtra("Try");
+        BroadcastRecieverClass bcReceiver = new BroadcastRecieverClass();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.EXTRA_NO_CONNECTIVITY);
+        this.registerReceiver(bcReceiver, filter);
+//      fragmentHolder = findViewById(R.id.fragmentPlaceHolder);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentTop());
         fragmentTransaction.commit();
