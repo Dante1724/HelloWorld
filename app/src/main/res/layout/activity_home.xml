@@ -32,6 +32,30 @@
     android:id="@+id/fragmentPlaceHolder"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1"/>
+    android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+    <Button
+        android:id="@+id/startJob"
+        android:layout_width="match_parent"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:text="start job"
+        android:onClick="scheduleJob"/>
+
+    <Button
+        android:id="@+id/endJob"
+        android:layout_width="match_parent"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:text="end job"
+        android:onClick="cancelJob"/>
+
+    </LinearLayout>
+
+</FrameLayout>
 
 </LinearLayout>
