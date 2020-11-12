@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@color/colorAccent"
     android:gravity="center_vertical"
-    tools:context=".MainActivity">
+    tools:context=".SignUp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
         <TextView
+            android:id="@+id/textViewUsername"
             android:layout_width="0dp"
             android:layout_weight="0.25"
             android:layout_height="32dp"
@@ -35,6 +36,32 @@
     </LinearLayout>
 
     <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:layout_marginBottom="10dp">
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="0dp"
+        android:layout_weight="0.25"
+        android:layout_height="32dp"
+        android:gravity="center_vertical"
+        android:text="Email:" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="0.75"
+        android:background="@color/colorWhite"
+        android:gravity="center_vertical"
+        android:hint="Email" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:orientation="horizontal"
@@ -43,7 +70,7 @@
         android:paddingRight="5dp"
         android:layout_marginBottom="10dp">
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewPassword"
             android:layout_width="0dp"
             android:layout_weight="0.25"
             android:layout_height="32dp"
@@ -62,19 +89,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="Login"/>
-    <Button
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="Sign Up"/>
+        android:text="Submit sign up"/>
 
 
 </LinearLayout>

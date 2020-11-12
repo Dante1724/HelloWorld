@@ -6,7 +6,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
@@ -29,13 +31,15 @@ public class HomeActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private Button btnStartJob;
     private Button btnCancelJob;
+    private Button btnLogOut = null;
+    public static final String KEY_EMAIL = "KEY_EMAIL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         btnStartJob = findViewById(R.id.startJob);
         btnCancelJob = findViewById(R.id.endJob);
 
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         tabLeft = findViewById(R.id.tabItemL);
         tabRight = findViewById(R.id.tabItemR);
@@ -73,7 +77,18 @@ public class HomeActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
+
         });
+
+        btnLogOut = findViewById(R.id.btnLogOut);
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logOut();
+            }
+        });
+
     }
 
     @Override
@@ -110,4 +125,14 @@ public class HomeActivity extends AppCompatActivity {
         scheduler.cancel(123);
         Log.i(TAG, "cancelJob");
     }
+
+    public void logOut(){
+        SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
+        editor.remove(KEY_EMAIL);
+        editor.commit();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
 }
