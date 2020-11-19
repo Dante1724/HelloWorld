@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button btnStartJob;
     private Button btnCancelJob;
     private Button btnLogOut = null;
+    private Button btnTambahMahaSiswa;
     public static final String KEY_EMAIL = "KEY_EMAIL";
 
     @Override
@@ -50,19 +51,19 @@ public class HomeActivity extends AppCompatActivity {
         this.registerReceiver(bcReceiver, filter);
 //      fragmentHolder = findViewById(R.id.fragmentPlaceHolder);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentTop());
+        fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentInputData());
         fragmentTransaction.commit();
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
             @Override
             public void onTabSelected(TabLayout.Tab tab){
                 if(tab.getPosition() == 0){
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentTop());
+                    fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentInputData());
                     fragmentTransaction.commit();
                     Log.d("success", "Left Tab");
                 }else if(tab.getPosition() == 1){
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentBottom());
+                    fragmentTransaction.replace(R.id.fragmentPlaceHolder, new FragmentTop());
                     fragmentTransaction.commit();
                     Log.d("success", "Right Tab");
                 }
@@ -88,6 +89,7 @@ public class HomeActivity extends AppCompatActivity {
                 logOut();
             }
         });
+
 
     }
 
@@ -133,6 +135,13 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+//    public void switchToAddMahasiswa(){
+//        Intent intent = new Intent(this, InputDataActivity.class);
+//        startActivity(intent);
+//    }
+
+
 
 
 }
